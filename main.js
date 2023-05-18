@@ -4,15 +4,18 @@ const { createApp } = Vue
 
     data() {
       return{
-
+        apiUrl: 'server.php'
       }
     },
     methods:{
-      getApi(){
-        console.log('GET API');
+      readList(){
+        axios.get('todo-list.json');
+        .then(result => {
+          console.log(result.data);
+        })
       }
     },
     mounted(){
-      this.getApi();
+      this.readList();
     }
   }).mount('#app')
